@@ -83,6 +83,7 @@
       text-transform: uppercase;
       color: #00fff6;
       text-shadow: 0 0 10px #00fff6, 0 0 20px #00e6e6;
+      text-align: center;
     }
 
     .profile {
@@ -112,11 +113,14 @@
     }
 
     .contact {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
       margin-top: 20px;
+    }
+
+    .contact .qr-container {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: nowrap;
     }
 
     .contact img {
@@ -140,12 +144,12 @@
 </head>
 <body>
   <header>
-    <h1>TianLeung's Commentary</h1>
-    <p>欢迎来到网络科技前言AI大世界</p>
+    <h1>TianLeung 的个人主页</h1>
+    <p>欢迎来到科技前言AI大世界</p>
   </header>
 
   <section class="profile">
-    <h2>关于我</h2>
+    <h2>感谢您的光临</h2>
     <img src="images/profile.jpg" alt="我的头像">
     <div class="content">
       <p>我是 TianLeung，热衷于探索未来科技与人工智能的技术开发者。</p>
@@ -156,18 +160,20 @@
 
   <section class="contact">
     <h2>联系我</h2>
-    <a href="https://www.douyin.com/user/MS4wLjABAAAAOUBQIFWZVsPdzoEFWDZpuNhWVm4XIz6C4KzBFe9qHNw" target="_blank">
-      <img src="images/douyin-qr.png" alt="抖音主页二维码">
-    </a>
-    <a href="#" target="_blank">
-      <img src="images/add-friend-qr.png" alt="添加好友二维码">
-    </a>
-    <a href="#" target="_blank">
-      <img src="images/blog-qr.png" alt="博客二维码">
-    </a>
-    <a href="#" target="_blank">
-      <img src="images/video-qr.png" alt="视频号二维码">
-    </a>
+    <div class="qr-container">
+      <a href="https://www.douyin.com/user/MS4wLjABAAAAOUBQIFWZVsPdzoEFWDZpuNhWVm4XIz6C4KzBFe9qHNw" target="_blank">
+        <img src="images/douyin-qr.png" alt="抖音主页二维码">
+      </a>
+      <a href="#" target="_blank">
+        <img src="images/add-friend-qr.png" alt="添加好友二维码">
+      </a>
+      <a href="#" target="_blank">
+        <img src="images/blog-qr.png" alt="博客二维码">
+      </a>
+      <a href="#" target="_blank">
+        <img src="images/video-qr.png" alt="视频号二维码">
+      </a>
+    </div>
   </section>
 </body>
 </html>
