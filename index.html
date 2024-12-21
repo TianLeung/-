@@ -5,21 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>关于我 - TianLeung</title>
   <style>
-    /* 页面基础样式 */
+    /* 全局样式 */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Roboto', sans-serif;
     }
 
     body {
-      background: linear-gradient(120deg, #000428, #004e92);
-      color: white;
+      font-family: 'Courier New', Courier, monospace;
+      background: radial-gradient(circle, #010116, #0b0033, #120045, #210046);
+      color: #00e6e6;
       overflow-x: hidden;
     }
 
-    /* 动态背景效果 */
+    /* 动态霓虹线条效果 */
     body::before {
       content: '';
       position: fixed;
@@ -27,43 +27,42 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: url('images/tech-background.jpg') no-repeat center center/cover;
-      opacity: 0.2;
+      background: url('images/cyberpunk-lines.jpg') no-repeat center center/cover;
+      opacity: 0.1;
       z-index: -1;
     }
 
     header {
       text-align: center;
       padding: 20px;
-      border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+      border-bottom: 1px solid rgba(0, 230, 230, 0.2);
     }
 
     header h1 {
       font-size: 3rem;
-      letter-spacing: 2px;
+      color: #00fff6;
+      text-shadow: 0 0 8px #00fff6, 0 0 12px #00e6e6;
     }
 
     header p {
+      margin-top: 10px;
       font-size: 1.2rem;
-      color: #a9c4f5;
+      color: #00b3b3;
+      text-shadow: 0 0 5px #00b3b3;
     }
 
     section {
       padding: 20px;
       max-width: 800px;
-      margin: 20px auto;
+      margin: 30px auto;
     }
 
     section h2 {
-      font-size: 2rem;
-      margin-bottom: 10px;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
       text-transform: uppercase;
-      color: #a9c4f5;
-    }
-
-    .content {
-      margin: 20px 0;
-      line-height: 1.8;
+      color: #00fff6;
+      text-shadow: 0 0 8px #00fff6, 0 0 12px #00e6e6;
     }
 
     /* 头像样式 */
@@ -73,52 +72,61 @@
 
     .profile img {
       border-radius: 50%;
-      width: 150px;
-      height: 150px;
-      border: 3px solid #a9c4f5;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-      transition: transform 0.3s ease-in-out;
+      width: 200px;
+      height: 200px;
+      border: 3px solid #00e6e6;
+      box-shadow: 0 0 15px #00e6e6, 0 0 25px #00b3b3;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
 
     .profile img:hover {
       transform: scale(1.1);
+      box-shadow: 0 0 25px #00fff6, 0 0 35px #00e6e6;
     }
 
-    /* 联系我样式 */
+    .content {
+      margin: 20px 0;
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: #a6fefe;
+      text-align: justify;
+    }
+
+    /* 联系方式样式 */
     .contact {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      align-items: center;
+      gap: 30px;
     }
 
     .contact img {
       width: 100%;
       border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-      transition: transform 0.3s ease-in-out;
+      box-shadow: 0 0 10px #00e6e6, 0 0 20px #00b3b3;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
 
     .contact img:hover {
       transform: scale(1.05);
+      box-shadow: 0 0 20px #00fff6, 0 0 30px #00e6e6;
     }
 
     .contact a {
       display: inline-block;
       text-align: center;
-      color: #fff;
-      background: #004e92;
+      color: #000;
+      background: linear-gradient(45deg, #00fff6, #00b3b3);
       padding: 10px 20px;
-      border-radius: 5px;
+      border-radius: 50px;
       text-decoration: none;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       font-weight: bold;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0 15px #00b3b3, 0 0 25px #00e6e6;
       transition: background 0.3s, transform 0.3s;
     }
 
     .contact a:hover {
-      background: #0076d1;
+      background: linear-gradient(45deg, #00b3b3, #00fff6);
       transform: translateY(-3px);
     }
   </style>
@@ -126,38 +134,37 @@
 <body>
   <header>
     <h1>TianLeung 的个人主页</h1>
-    <p>分享 AI 技术、AI 软件应用、电脑软件应用、短视频直播运营等知识</p>
+    <p>科技感十足，赛博朋克风格的展示页面</p>
   </header>
 
   <section class="profile">
     <h2>关于我</h2>
-    <img src="images/avatar.jpg" alt="头像">
+    <img src="images/profile.jpg" alt="头像">
     <div class="content">
-      <p>大家好！我是 TianLeung，一名热爱 AI 技术与短视频直播运营的技术分享者。</p>
-      <p>我的内容涉及 <strong>AI 技术</strong>、<strong>AI 软件应用</strong>、<strong>电脑软件应用</strong> 和 <strong>短视频运营</strong> 等领域。</p>
-      <p>通过学习和分享，我希望能够帮助更多人掌握前沿技术、提升工作效率。</p>
+      <p>我是 TianLeung，热爱科技与未来技术的技术达人，分享关于 <strong>AI 技术</strong>、<strong>软件应用</strong>、<strong>短视频运营</strong> 等相关知识。</p>
+      <p>希望通过分享和实践，帮助更多人了解和掌握前沿技术，享受科技带来的乐趣。</p>
     </div>
   </section>
 
   <section class="contact">
     <h2>联系我</h2>
     <div>
-      <a href="https://www.douyin.com/user/MS4wLjABAAAAOUBQIFWZVsPdzoEFWDZpuNhWVm4XIz6C4KzBFe9qHNw" target="_blank">我的抖音</a>
-      <p>或扫码下方二维码访问我的抖音主页：</p>
-      <img src="images/douyin-qr.jpg" alt="抖音二维码">
+      <a href="https://www.douyin.com/" target="_blank">我的抖音主页</a>
+      <p>扫码访问我的抖音主页：</p>
+      <img src="images/douyin-qr.png" alt="抖音二维码">
     </div>
     <div>
-      <p>添加我的账号：<strong>TL65367</strong></p>
+      <p>添加好友（账号：<strong>TL65367</strong>）</p>
       <p>扫码添加好友：</p>
-      <img src="images/add-friend-qr.jpg" alt="添加好友二维码">
+      <img src="images/add-friend-qr.png" alt="添加好友二维码">
     </div>
     <div>
-      <p>博客网站二维码：</p>
-      <img src="images/blog-qr.jpg" alt="博客二维码">
+      <p>访问我的博客：</p>
+      <img src="images/blog-qr.png" alt="博客二维码">
     </div>
     <div>
-      <p>视频号二维码：</p>
-      <img src="images/video-qr.jpg" alt="视频号二维码">
+      <p>关注我的视频号：</p>
+      <img src="images/video-qr.png" alt="视频号二维码">
     </div>
   </section>
 </body>
