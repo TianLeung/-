@@ -14,12 +14,12 @@
 
     body {
       font-family: 'Courier New', Courier, monospace;
-      background: radial-gradient(circle, #010116, #0b0033, #120045, #210046);
+      background: linear-gradient(135deg, #000013, #1a002b, #22003f);
       color: #00e6e6;
       overflow-x: hidden;
     }
 
-    /* 动态霓虹线条效果 */
+    /* 背景霓虹线条动态效果 */
     body::before {
       content: '';
       position: fixed;
@@ -30,25 +30,45 @@
       background: url('images/cyberpunk-lines.jpg') no-repeat center center/cover;
       opacity: 0.1;
       z-index: -1;
+      animation: flicker 2s infinite alternate;
+    }
+
+    @keyframes flicker {
+      0%, 100% {
+        opacity: 0.1;
+      }
+      50% {
+        opacity: 0.15;
+      }
     }
 
     header {
       text-align: center;
-      padding: 20px;
+      padding: 30px;
       border-bottom: 1px solid rgba(0, 230, 230, 0.2);
     }
 
+    /* 动态科技感标题 */
     header h1 {
       font-size: 3rem;
       color: #00fff6;
-      text-shadow: 0 0 8px #00fff6, 0 0 12px #00e6e6;
+      text-shadow: 0 0 10px #00fff6, 0 0 20px #00e6e6, 0 0 30px #00b3b3;
+      animation: glow 3s infinite alternate;
+    }
+
+    @keyframes glow {
+      0%, 100% {
+        text-shadow: 0 0 10px #00fff6, 0 0 20px #00e6e6;
+      }
+      50% {
+        text-shadow: 0 0 15px #00fff6, 0 0 30px #00b3b3;
+      }
     }
 
     header p {
       margin-top: 10px;
       font-size: 1.2rem;
       color: #00b3b3;
-      text-shadow: 0 0 5px #00b3b3;
     }
 
     section {
@@ -58,22 +78,21 @@
     }
 
     section h2 {
-      font-size: 2.5rem;
+      font-size: 2rem;
       margin-bottom: 20px;
       text-transform: uppercase;
       color: #00fff6;
-      text-shadow: 0 0 8px #00fff6, 0 0 12px #00e6e6;
+      text-shadow: 0 0 10px #00fff6, 0 0 20px #00e6e6;
     }
 
-    /* 头像样式 */
     .profile {
       text-align: center;
     }
 
     .profile img {
       border-radius: 50%;
-      width: 200px;
-      height: 200px;
+      width: 150px;
+      height: 150px;
       border: 3px solid #00e6e6;
       box-shadow: 0 0 15px #00e6e6, 0 0 25px #00b3b3;
       transition: transform 0.4s ease, box-shadow 0.4s ease;
@@ -92,16 +111,19 @@
       text-align: justify;
     }
 
-    /* 联系方式样式 */
     .contact {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 20px;
     }
 
     .contact img {
-      width: 100%;
+      width: 150px;
+      height: 150px;
       border-radius: 10px;
+      margin: 10px;
       box-shadow: 0 0 10px #00e6e6, 0 0 20px #00b3b3;
       transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
@@ -112,60 +134,40 @@
     }
 
     .contact a {
-      display: inline-block;
-      text-align: center;
-      color: #000;
-      background: linear-gradient(45deg, #00fff6, #00b3b3);
-      padding: 10px 20px;
-      border-radius: 50px;
       text-decoration: none;
-      font-size: 1.2rem;
-      font-weight: bold;
-      box-shadow: 0 0 15px #00b3b3, 0 0 25px #00e6e6;
-      transition: background 0.3s, transform 0.3s;
-    }
-
-    .contact a:hover {
-      background: linear-gradient(45deg, #00b3b3, #00fff6);
-      transform: translateY(-3px);
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>TianLeung 的个人主页</h1>
-    <p>科技感十足，赛博朋克风格的展示页面</p>
+    <h1>TianLeung's Commentary</h1>
+    <p>欢迎来到网络科技前言AI大世界</p>
   </header>
 
   <section class="profile">
     <h2>关于我</h2>
-    <img src="images/profile.jpg" alt="头像">
+    <img src="images/profile.jpg" alt="我的头像">
     <div class="content">
-      <p>我是 TianLeung，热爱科技与未来技术的技术达人，分享关于 <strong>AI 技术</strong>、<strong>软件应用</strong>、<strong>短视频运营</strong> 等相关知识。</p>
-      <p>希望通过分享和实践，帮助更多人了解和掌握前沿技术，享受科技带来的乐趣。</p>
+      <p>我是 TianLeung，热衷于探索未来科技与人工智能的技术开发者。</p>
+      <p>通过不断地学习与实践，我致力于分享关于 <strong>人工智能应用</strong>、<strong>短视频内容制作</strong>、<strong>技术博客开发</strong> 等方面的知识。</p>
+      <p>我的目标是推动更多人了解科技，体验创新，享受 AI 和现代技术带来的无限可能。</p>
     </div>
   </section>
 
   <section class="contact">
     <h2>联系我</h2>
-    <div>
-      <a href="https://www.douyin.com/" target="_blank">我的抖音主页</a>
-      <p>扫码访问我的抖音主页：</p>
-      <img src="images/douyin-qr.png" alt="抖音二维码">
-    </div>
-    <div>
-      <p>添加好友（账号：<strong>TL65367</strong>）</p>
-      <p>扫码添加好友：</p>
+    <a href="https://www.douyin.com/user/MS4wLjABAAAAOUBQIFWZVsPdzoEFWDZpuNhWVm4XIz6C4KzBFe9qHNw" target="_blank">
+      <img src="images/douyin-qr.png" alt="抖音主页二维码">
+    </a>
+    <a href="#" target="_blank">
       <img src="images/add-friend-qr.png" alt="添加好友二维码">
-    </div>
-    <div>
-      <p>访问我的博客：</p>
+    </a>
+    <a href="#" target="_blank">
       <img src="images/blog-qr.png" alt="博客二维码">
-    </div>
-    <div>
-      <p>关注我的视频号：</p>
+    </a>
+    <a href="#" target="_blank">
       <img src="images/video-qr.png" alt="视频号二维码">
-    </div>
+    </a>
   </section>
 </body>
 </html>
