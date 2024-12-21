@@ -1,179 +1,183 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>关于我 - TianLeung</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    /* 全局样式 */
-    * {
+    body {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Courier New', Courier, monospace;
-      background: linear-gradient(135deg, #000013, #1a002b, #22003f);
-      color: #00e6e6;
+      font-family: 'Orbitron', sans-serif;
+      color: #00fff6;
       overflow-x: hidden;
     }
 
-    /* 背景霓虹线条动态效果 */
-    body::before {
-      content: '';
+    /* 视频背景容器 */
+    .video-background {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: url('images/cyberpunk-lines.jpg') no-repeat center center/cover;
-      opacity: 0.1;
       z-index: -1;
-      animation: flicker 2s infinite alternate;
+      overflow: hidden;
     }
 
-    @keyframes flicker {
-      0%, 100% {
-        opacity: 0.1;
-      }
-      50% {
-        opacity: 0.15;
-      }
+    .video-background video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     header {
       text-align: center;
-      padding: 30px;
-      border-bottom: 1px solid rgba(0, 230, 230, 0.2);
+      padding: 20px;
     }
 
-    /* 动态科技感标题 */
     header h1 {
-      font-size: 3rem;
-      color: #00fff6;
-      text-shadow: 0 0 10px #00fff6, 0 0 20px #00e6e6, 0 0 30px #00b3b3;
-      animation: glow 3s infinite alternate;
+      font-size: 3em;
+      text-shadow: 0 0 15px #00e6e6, 0 0 30px #00b3b3;
+      animation: glow 1.5s infinite alternate;
     }
 
     @keyframes glow {
-      0%, 100% {
-        text-shadow: 0 0 10px #00fff6, 0 0 20px #00e6e6;
+      from {
+        text-shadow: 0 0 15px #00e6e6, 0 0 30px #00b3b3;
       }
-      50% {
-        text-shadow: 0 0 15px #00fff6, 0 0 30px #00b3b3;
+      to {
+        text-shadow: 0 0 25px #00fff6, 0 0 40px #00e6e6;
       }
-    }
-
-    header p {
-      margin-top: 10px;
-      font-size: 1.2rem;
-      color: #00b3b3;
     }
 
     section {
+      margin: 20px auto;
       padding: 20px;
       max-width: 800px;
-      margin: 30px auto;
+      background: rgba(0, 0, 0, 0.8);
+      border-radius: 10px;
+      box-shadow: 0 0 15px #00e6e6;
     }
 
     section h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      text-transform: uppercase;
-      color: #00fff6;
-      text-shadow: 0 0 10px #00fff6, 0 0 20px #00e6e6;
       text-align: center;
+      font-size: 2em;
+      margin-bottom: 15px;
     }
 
-    .profile {
+    .about {
       text-align: center;
+      font-size: 1.2em;
+      line-height: 1.6;
     }
 
-    .profile img {
-      border-radius: 50%;
+    .about img {
       width: 150px;
       height: 150px;
-      border: 3px solid #00e6e6;
-      box-shadow: 0 0 15px #00e6e6, 0 0 25px #00b3b3;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-    }
-
-    .profile img:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 25px #00fff6, 0 0 35px #00e6e6;
-    }
-
-    .content {
-      margin: 20px 0;
-      font-size: 1.2rem;
-      line-height: 1.8;
-      color: #a6fefe;
-      text-align: justify;
+      border-radius: 50%;
+      margin-bottom: 15px;
+      border: 3px solid #00fff6;
     }
 
     .contact {
-      margin-top: 20px;
-    }
-
-    .contact .qr-container {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      flex-wrap: nowrap;
+      text-align: center;
     }
 
     .contact img {
       width: 150px;
       height: 150px;
-      border-radius: 10px;
       margin: 10px;
-      box-shadow: 0 0 10px #00e6e6, 0 0 20px #00b3b3;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      border: 3px solid #00fff6;
+      border-radius: 10px;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .contact img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px #00fff6, 0 0 30px #00e6e6;
+      transform: scale(1.1);
+      box-shadow: 0 0 20px #00fff6;
     }
 
-    .contact a {
-      text-decoration: none;
+    .contact .label {
+      font-size: 1em;
+      margin-top: 5px;
+      color: #ffffff;
+    }
+
+    .contact-grid {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      font-size: 0.9em;
+      color: #00e6e6;
     }
   </style>
 </head>
 <body>
+  <!-- 视频背景 -->
+  <div class="video-background">
+    <video autoplay muted loop>
+      <source src="images/background.mp4" type="video/mp4">
+      您的浏览器不支持 HTML5 视频标签。
+    </video>
+  </div>
+
   <header>
-    <h1>TianLeung 的个人主页</h1>
-    <p>欢迎来到科技前言AI大世界</p>
+    <h1>TianLeung 的分享</h1> 
   </header>
 
-  <section class="profile">
-    <h2>感谢您的光临</h2>
-    <img src="images/profile.jpg" alt="我的头像">
-    <div class="content">
-      <p>我是 TianLeung，热衷于探索未来科技与人工智能的技术开发者。</p>
-      <p>通过不断地学习与实践，我致力于分享关于 <strong>人工智能应用</strong>、<strong>短视频内容制作</strong>、<strong>技术博客开发</strong> 等方面的知识。</p>
-      <p>我的目标是推动更多人了解科技，体验创新，享受 AI 和现代技术带来的无限可能。</p>
+  <section>
+    <h2>关于我</h2>
+    <div class="about">
+      <img src="images/profile.jpg" alt="TianLeung 的头像">
+      <p>
+        欢迎你的到来！我是 TianLeung，一名专注于 AI 技术、AI 软件应用、电脑软件应用、短视频直播运营的知识分享者。 
+        我致力于帮助更多人了解和掌握最新的科技趋势，同时为个人成长和商业发展提供有价值的支持。
+        <br><br>
+        我擅长：
+        <ul>
+          <li>人工智能技术及应用</li>
+          <li>AI 驱动的软件开发与使用</li>
+          <li>电脑与办公软件的深入研究</li>
+          <li>短视频内容创作与直播运营</li>
+        </ul>
+        如果你对这些领域感兴趣，请随时通过下方的方式联系我！
+      </p>
     </div>
   </section>
 
-  <section class="contact">
+  <section>
     <h2>联系我</h2>
-    <div class="qr-container">
-      <a href="https://www.douyin.com/user/MS4wLjABAAAAOUBQIFWZVsPdzoEFWDZpuNhWVm4XIz6C4KzBFe9qHNw" target="_blank">
-        <img src="images/douyin-qr.png" alt="抖音主页二维码">
-      </a>
-      <a href="#" target="_blank">
-        <img src="images/add-friend-qr.png" alt="添加好友二维码">
-      </a>
-      <a href="#" target="_blank">
-        <img src="images/blog-qr.png" alt="博客二维码">
-      </a>
-      <a href="#" target="_blank">
-        <img src="images/video-qr.png" alt="视频号二维码">
-      </a>
+    <div class="contact">
+      <p>扫描以下二维码添加我的各个平台！</p>
+      <div class="contact-grid">
+        <div>
+          <img src="images/douyin-qr.png" alt="抖音二维码">
+          <p class="label">抖音账号</p>
+        </div>
+        <div>
+          <img src="images/add-friend-qr.png" alt="添加好友二维码">
+          <p class="label">添加好友：TL65367</p>
+        </div>
+        <div>
+          <img src="images/blog-qr.png" alt="博客二维码">
+          <p class="label">博客二维码</p>
+        </div>
+        <div>
+          <img src="images/video-qr.png" alt="视频号二维码">
+          <p class="label">视频号二维码</p>
+        </div>
+      </div>
     </div>
   </section>
+
+  <footer>
+    <p>&copy; 2024 TianLeung. 版权所有。</p>
+  </footer>
 </body>
 </html>
