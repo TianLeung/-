@@ -11,24 +11,18 @@
       padding: 0;
       font-family: 'Orbitron', sans-serif;
       color: #00fff6;
+      background: black;
       overflow-x: hidden;
     }
 
-    /* 视频背景容器 */
-    .video-background {
+    #video-background {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: -1;
-      overflow: hidden;
-    }
-
-    .video-background video {
-      width: 100%;
-      height: 100%;
       object-fit: cover;
+      z-index: -1;
     }
 
     header {
@@ -119,16 +113,13 @@
   </style>
 </head>
 <body>
-  <!-- 视频背景 -->
-  <div class="video-background">
-    <video autoplay muted loop>
-      <source src="images/background.mp4" type="video/mp4">
-      您的浏览器不支持 HTML5 视频标签。
-    </video>
-  </div>
+  <video id="video-background" autoplay loop muted>
+    <source src="images/background-video.mp4" type="video/mp4">
+    您的浏览器不支持 HTML5 视频。
+  </video>
 
   <header>
-    <h1>TianLeung 的分享</h1> 
+    <h1>TianLeung 的分享</h1>
   </header>
 
   <section>
@@ -136,15 +127,15 @@
     <div class="about">
       <img src="images/profile.jpg" alt="TianLeung 的头像">
       <p>
-        欢迎你的到来！我是 TianLeung，一名专注于 AI 技术、AI 软件应用、电脑软件应用、短视频直播运营的知识分享者。 
+        欢迎你的到来！我是 添亮，20年从事抖音直播带货行业，23年开始专注于 AI 技术、AI 软件应用、电脑软件应用、短视频直播运营的知识分享者。 
         我致力于帮助更多人了解和掌握最新的科技趋势，同时为个人成长和商业发展提供有价值的支持。
         <br><br>
-        我擅长：
+        专心致力于
         <ul>
           <li>人工智能技术及应用</li>
-          <li>AI 驱动的软件开发与使用</li>
-          <li>电脑与办公软件的深入研究</li>
-          <li>短视频内容创作与直播运营</li>
+          <li>AI 应用软件研究与使用</li>
+          <li>优质电脑办公软件的分享</li>
+          <li>直播和短视频内容创作的运营</li>
         </ul>
         如果你对这些领域感兴趣，请随时通过下方的方式联系我！
       </p>
@@ -157,19 +148,27 @@
       <p>扫描以下二维码添加我的各个平台！</p>
       <div class="contact-grid">
         <div>
-          <img src="images/douyin-qr.png" alt="抖音二维码">
+          <a href="https://www.douyin.com/user/MS4wLjABAAAAOUBQIFWZVsPdzoEFWDZpuNhWVm4XIz6C4KzBFe9qHNw" target="_blank">
+            <img src="images/douyin-qr.png" alt="抖音二维码">
+          </a>
           <p class="label">抖音账号</p>
         </div>
         <div>
-          <img src="images/add-friend-qr.png" alt="添加好友二维码">
+          <a href="#" target="_blank">
+            <img src="images/add-friend-qr.png" alt="添加好友二维码">
+          </a>
           <p class="label">添加好友：TL65367</p>
         </div>
         <div>
-          <img src="images/blog-qr.png" alt="博客二维码">
+          <a href="#" target="_blank">
+            <img src="images/blog-qr.png" alt="博客二维码">
+          </a>
           <p class="label">博客二维码</p>
         </div>
         <div>
-          <img src="images/video-qr.png" alt="视频号二维码">
+          <a href="#" target="_blank">
+            <img src="images/video-qr.png" alt="视频号二维码">
+          </a>
           <p class="label">视频号二维码</p>
         </div>
       </div>
