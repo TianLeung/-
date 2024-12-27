@@ -4,6 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>关于我 - TianLeung</title>
+    <meta name="description" content="TianLeung的AI工具分享平台，提供AI写作、图像、视频、办公等多类工具">
+    <meta name="keywords" content="AI工具,AI写作,AI图像,AI视频,AI办公,TianLeung">
+    <meta name="author" content="TianLeung">
+    <meta name="robots" content="index,follow">
+    <meta property="og:title" content="关于我 - TianLeung">
+    <meta property="og:description" content="TianLeung的AI工具分享平台">
+    <meta property="og:image" content="images/profile.jpg">
+    <meta name="theme-color" content="#000000">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
@@ -13,6 +23,73 @@
       color: #00fff6;
       overflow-x: hidden;
     }
+/* 搜索和筛选功能样式 */
+.search-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.search-input {
+    width: 100%;
+    max-width: 600px;
+    padding: 12px 20px;
+    border: 2px solid #00e6e6;
+    border-radius: 25px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #00fff6;
+    font-size: 1em;
+    transition: all 0.3s ease;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.search-input:focus {
+    outline: none;
+    box-shadow: 0 0 15px rgba(0, 230, 230, 0.5);
+}
+
+.search-input::placeholder {
+    color: rgba(0, 230, 230, 0.5);
+}
+
+/* 筛选按钮样式 */
+.filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.filter-button {
+    padding: 8px 16px;
+    border: 1px solid #00e6e6;
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #00fff6;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.filter-button:hover,
+.filter-button.active {
+    background: #00e6e6;
+    color: #000;
+}
+
+/* 响应式适配 */
+@media screen and (max-width: 768px) {
+    .filter-buttons {
+        gap: 5px;
+    }
+    
+    .filter-button {
+        padding: 6px 12px;
+        font-size: 0.9em;
+    }
+}
 
     /* 视频背景容器 */
     .video-background {
@@ -54,7 +131,7 @@
     section {
       margin: 20px auto;
       padding: 20px;
-      max-width: 800px;
+      max-width: 1200px;
       background: rgba(0, 0, 0, 0.8);
       border-radius: 10px;
       box-shadow: 0 0 15px #00e6e6;
@@ -79,6 +156,40 @@
       margin-bottom: 15px;
       border: 3px solid #00fff6;
     }
+.about {
+  text-align: center;
+  font-size: 1.2em;
+  line-height: 1.6;
+}
+
+.about img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  border: 3px solid #00fff6;
+}
+
+/* 添加以下新样式 */
+.about ul {
+    list-style-position: inside;
+    padding-left: 0;
+    margin: 0 auto;
+    text-align: center;
+    width: 80%; /* 控制列表宽度 */
+    max-width: 600px; /* 最大宽度 */
+}
+
+.about ul li {
+    margin-bottom: 10px;
+    padding: 5px 0;
+}
+
+.about p {
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 0 20px;
+}
 
     .contact {
       text-align: center;
@@ -128,10 +239,15 @@
     text-align: center;
     padding: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     height: 113px;
     width: 199px;
     position: relative;
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
 }
 
 .tool-card a {
@@ -148,6 +264,31 @@
         0 0 0 2px rgba(0, 0, 0, 0.8),
         0 0 0 3px #ff0000;
     animation: rainbow 4s linear infinite;
+    loading: lazy;
+    object-fit: cover;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+/* 添加图片加载失败时的样式 */
+.tool-card img:not([src]), 
+.tool-card img[src=""], 
+.tool-card img[src*="error"], 
+.tool-card img[src$="default.png"] {
+    background: #000;
+    position: relative;
+}
+
+.tool-card img:not([src])::after, 
+.tool-card img[src=""]::after, 
+.tool-card img[src*="error"]::after, 
+.tool-card img[src$="default.png"]::after {
+    content: "加载失败";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #00fff6;
+    font-size: 12px;
 }
 
 @keyframes rainbow {
@@ -157,6 +298,11 @@
     60% { box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.8), 0 0 0 3px #00ff00; }
     80% { box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.8), 0 0 0 3px #0000ff; }
     100% { box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.8), 0 0 0 3px #ff0000; }
+}
+.tool-card img {
+    /* ... 原有样式保持不变 ... */
+    will-change: box-shadow;
+    transform: translateZ(0);
 }
 
 .tool-card h3 {
@@ -181,8 +327,16 @@
 }
 
 .tool-card:hover {
-    transform: scale(1.05);
+    transform: scale(1.05) translateZ(0);
     box-shadow: 0 0 20px #00fff6;
+}
+
+/* 添加触摸设备的优化 */
+@media (hover: hover) {
+    .tool-card:hover {
+        transform: scale(1.05) translateZ(0);
+        box-shadow: 0 0 20px #00fff6;
+    }
 }
 
 .tool-card:hover p {
@@ -204,28 +358,228 @@
 }
 
 /* 响应式布局 */
+/* 大屏幕设备 (1200px 及以上) */
 @media screen and (max-width: 1400px) {
     .tools-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
         gap: 15px;
+        padding: 0 20px;
     }
 }
 
-@media screen and (max-width: 1100px) {
+/* 中等屏幕设备 (768px 到 1199px) */
+@media screen and (max-width: 1199px) {
+    header h1 {
+        font-size: 2.5em;
+    }
+
     .tools-grid {
-        gap: 15px;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 12px;
+    }
+
+    .tool-card {
+        width: 160px;
+        height: 100px;
+    }
+
+    .tool-card h3 {
+        font-size: 0.9em;
+    }
+
+    .contact-section {
+        height: auto;
+        min-height: 100px;
+        padding: 10px 0;
     }
 }
 
-@media screen and (max-width: 800px) {
+/* 平板设备 (576px 到 767px) */
+@media screen and (max-width: 767px) {
+    header h1 {
+        font-size: 2em;
+    }
+
+    section {
+        margin: 15px;
+        padding: 15px;
+    }
+
     .tools-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
         gap: 10px;
     }
+
+    .tool-card {
+        width: 140px;
+        height: 95px;
+        padding: 8px;
+    }
+
+    .tool-card img {
+        width: 32px;
+        height: 32px;
+    }
+
+    .contact-grid {
+        gap: 15px;
+    }
+
+    .contact img {
+        width: 50px;
+        height: 50px;
+    }
 }
 
-@media screen and (max-width: 500px) {
+/* 手机设备 (575px 及以下) */
+@media screen and (max-width: 575px) {
+    header h1 {
+        font-size: 1.8em;
+    }
+
+    section {
+        margin: 10px;
+        padding: 10px;
+    }
+
     .tools-grid {
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+        gap: 8px;
+    }
+
+    .tool-card {
+        width: 130px;
+        height: 90px;
+        padding: 6px;
+    }
+
+    .tool-card img {
+        width: 28px;
+        height: 28px;
+    }
+
+    .tool-card h3 {
+        font-size: 0.8em;
+        margin: 4px 0;
+    }
+
+    .tool-card p {
+        font-size: 0.7em;
+        -webkit-line-clamp: 2;
+    }
+
+    .contact-section {
+        padding: 8px 0;
+    }
+
+    .contact-grid {
         gap: 10px;
     }
+
+    .contact img {
+        width: 45px;
+        height: 45px;
+    }
+
+    .contact .label {
+        font-size: 0.7em;
+    }
+}
+
+/* 超小屏幕设备优化 */
+@media screen and (max-width: 360px) {
+    .tools-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 6px;
+    }
+
+    .tool-card {
+        width: 120px;
+        height: 85px;
+    }
+}
+.contact-section {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 111px;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    border-top: 1px solid #00e6e6;
+    box-shadow: 0 -2px 10px rgba(0, 230, 230, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact-section h2 {
+    margin: 5px 0;
+    font-size: 1.5em;
+    text-align: center;
+    width: 100%;
+}
+
+.contact {
+    padding: 5px 0;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.contact p {
+    margin: 0 0 5px 0;
+    font-size: 0.9em;
+    text-align: center;
+}
+
+.contact-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+    margin: 0 auto;
+    width: fit-content;
+}
+
+.contact img {
+    width: 60px;
+    height: 60px;
+    margin: 0;
+    loading: lazy;
+    object-fit: cover;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+/* 添加联系方式图片加载失败时的样式 */
+.contact img:not([src]), 
+.contact img[src=""], 
+.contact img[src*="error"] {
+    background: #000;
+    position: relative;
+}
+
+.contact img:not([src])::after, 
+.contact img[src=""]::after, 
+.contact img[src*="error"]::after {
+    content: "二维码加载失败";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #00fff6;
+    font-size: 12px;
+}
+
+.contact .label {
+    font-size: 0.8em;
+    margin-top: 2px;
+}
+
+body {
+    padding-bottom: 121px;
 }
     footer {
       text-align: center;
@@ -233,6 +587,100 @@
       font-size: 0.9em;
       color: #00e6e6;
     }
+/* 加载状态和错误处理样式 */
+.loading {
+    position: relative;
+    min-height: 200px;
+}
+
+.loading::after {
+    content: "加载中...";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #00fff6;
+    animation: loadingText 1.5s infinite;
+}
+
+@keyframes loadingText {
+    0% { opacity: 0.3; }
+    50% { opacity: 1; }
+    100% { opacity: 0.3; }
+}
+
+.error-message {
+    text-align: center;
+    color: #ff4444;
+    padding: 20px;
+    background: rgba(255, 0, 0, 0.1);
+    border-radius: 10px;
+    margin: 20px 0;
+    border: 1px solid #ff4444;
+}
+
+.tool-card.error {
+    border-color: #ff4444;
+    animation: errorShake 0.5s;
+}
+
+@keyframes errorShake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+/* 统一处理所有工具卡片的图片错误状态 */
+.tool-card img:not([src]), 
+.tool-card img[src=""], 
+.tool-card img[src*="error"] {
+    display: none;
+}
+
+.tool-card img:not([src]) + h3::before, 
+.tool-card img[src=""] + h3::before, 
+.tool-card img[src*="error"] + h3::before {
+    content: "⚠️";
+    display: block;
+    font-size: 20px;
+    margin-bottom: 5px;
+    color: #ff4444;
+}
+/* 联系方式区域的错误处理样式 */
+.contact img:not([src]), 
+.contact img[src=""], 
+.contact img[src*="error"] {
+    position: relative;
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid #ff4444;
+}
+
+.contact img:not([src])::after, 
+.contact img[src=""]::after, 
+.contact img[src*="error"]::after {
+    content: "二维码加载失败";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ff4444;
+    font-size: 12px;
+    width: 100%;
+    text-align: center;
+}
+
+.contact-section .error-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1001;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    white-space: nowrap;
+}
   </style>
 </head>
 <body>
@@ -247,6 +695,20 @@
   <header>
     <h1>TianLeung 的分享</h1>
   </header>
+<div class="search-container">
+    <input type="text" class="search-input" placeholder="搜索AI工具...">
+    <div class="filter-buttons">
+        <button class="filter-button active" data-category="all">全部</button>
+        <button class="filter-button" data-category="writing">写作</button>
+        <button class="filter-button" data-category="image">图像</button>
+        <button class="filter-button" data-category="video">视频</button>
+        <button class="filter-button" data-category="audio">音频</button>
+        <button class="filter-button" data-category="code">编程</button>
+        <button class="filter-button" data-category="office">办公</button>
+        <button class="filter-button" data-category="design">设计</button>
+        <button class="filter-button" data-category="chat">对话</button>
+    </div>
+</div>
 
   <section>
     <h2>关于我</h2>
@@ -268,12 +730,12 @@
     </div>
   </section>
 
-    <section>
-        <h2>AI写作工具</h2>
-        <div class="tools-grid">
+    <section data-category="writing">
+    <h2>AI写作工具</h2>
+    <div class="tools-grid">
             <div class="tool-card">
                 <a href="https://ibiling.cn/?from=ai-bot" target="_blank">
-                    <img src="https://ai-bot.cn/wp-content/uploads/2024/08/xuejieAI.png" alt="笔灵AI写作">
+                    <img src="笔灵AI写作.png" alt="笔灵AI写作">
                     <h3>笔灵AI写作</h3>
                     <p>面向专业写作领域的AI写作工具</p>
                 </a>
@@ -387,7 +849,7 @@
 </body>
 </html>
 
-<section>
+<section data-category="image">
     <h2>AI图像工具</h2>
     <div class="tools-grid">
         <div class="tool-card">
@@ -630,7 +1092,7 @@
     </div>
 </section>
 
-<section>
+<section data-category="video">
     <h2>AI视频工具</h2>
     <div class="tools-grid">
         <div class="tool-card">
@@ -971,7 +1433,7 @@
     </div>
 </section>
 
-<section>
+<section data-category="office">
     <h2>AI办公工具</h2>
     <div class="tools-grid">
         <div class="tool-card">
@@ -1080,7 +1542,7 @@
     </div>
 </section>
 
-<section>
+<section data-category="design">
     <h2>AI设计工具</h2>
     <div class="tools-grid">
         <div class="tool-card">
@@ -1253,7 +1715,7 @@
     </div>
 </section>
 
-<section>
+<section data-category="chat">
     <h2>AI对话聊天</h2>
     <div class="tools-grid">
         <div class="tool-card">
@@ -1394,7 +1856,7 @@
     </div>
 </section>
 
-<section>
+<section data-category="code">
     <h2>AI编程工具</h2>
     <div class="tools-grid">
         <div class="tool-card">
@@ -1463,7 +1925,7 @@
     </div>
 </section>
 
-<section>
+<section data-category="audio">
     <h2>AI音频工具</h2>
     <div class="tools-grid">
         <div class="tool-card">
@@ -1590,41 +2052,109 @@
 </body>
 </html>
 
-  <section>
-    <h2>联系我</h2>
-    <div class="contact">
-      <p>扫描以下二维码添加我的各个平台！</p>
-      <div class="contact-grid">
-        <div>
-          <a href="https://www.douyin.com/user/MS4wLjABAAAAOUBQIFWZVsPdzoEFWDZpuNhWVm4XIz6C4KzBFe9qHNw" target="_blank">
-            <img src="images/douyin-qr.png" alt="抖音二维码">
-          </a>
-          <p class="label">抖音账号</p>
-        </div>
-        <div>
-          <a href="#" target="_blank">
-            <img src="images/add-friend-qr.png" alt="添加好友二维码">
-          </a>
-          <p class="label">添加好友：TL65367</p>
-        </div>
-        <div>
-          <a href="#" target="_blank">
-            <img src="images/blog-qr.png" alt="博客二维码">
-          </a>
-          <p class="label">博客二维码</p>
-        </div>
-        <div>
-          <a href="#" target="_blank">
-            <img src="images/video-qr.png" alt="视频号二维码">
-          </a>
-          <p class="label">视频号二维码</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <footer>
     <p>&copy; 2024 TianLeung. 版权所有。</p>
   </footer>
+  <section class="contact-section">
+    <h2>联系我</h2>
+    <div class="contact">
+        <p>扫描以下二维码添加我的各个平台！</p>
+        <div class="contact-grid">
+            <div>
+                <a href="https://www.douyin.com/user/MS4wLjABAAAAOUBQIFWZVsPdzoEFWDZpuNhWVm4XIz6C4KzBFe9qHNw" target="_blank">
+                    <img src="images/douyin-qr.png" alt="抖音二维码">
+                    <p class="label">抖音账号</p>
+                </a>
+            </div>
+            <div>
+                <a href="#" target="_blank">
+                    <img src="images/add-friend-qr.png" alt="添加好友二维码">
+                    <p class="label">添加好友：TL65367</p>
+                </a>
+            </div>
+            <div>
+                <a href="#" target="_blank">
+                    <img src="images/blog-qr.png" alt="博客二维码">
+                    <p class="label">博客二维码</p>
+                </a>
+            </div>
+            <div>
+                <a href="#" target="_blank">
+                    <img src="images/video-qr.png" alt="视频号二维码">
+                    <p class="label">视频号二维码</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.querySelector('.search-input');
+    const filterButtons = document.querySelectorAll('.filter-button');
+    const sections = document.querySelectorAll('section');
+    
+    // 搜索功能
+    searchInput.addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
+        filterContent(searchTerm, getCurrentCategory());
+    });
+    
+    // 筛选功能
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const category = this.dataset.category;
+            
+            // 更新按钮状态
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            
+            // 筛选内容
+            sections.forEach(section => {
+                if (section.classList.contains('contact-section')) return;
+                
+                if (category === 'all') {
+                    section.style.display = '';
+                } else {
+                    const sectionCategory = section.dataset.category;
+                    section.style.display = sectionCategory === category ? '' : 'none';
+                }
+            });
+            
+            // 同时应用搜索条件
+            filterContent(searchInput.value.toLowerCase(), category);
+        });
+    });
+    
+    function getCurrentCategory() {
+        return document.querySelector('.filter-button.active').dataset.category;
+    }
+    
+    function filterContent(searchTerm, category) {
+        sections.forEach(section => {
+            if (section.classList.contains('contact-section')) return;
+            
+            if (category !== 'all' && section.dataset.category !== category) {
+                section.style.display = 'none';
+                return;
+            }
+            
+            const cards = section.querySelectorAll('.tool-card');
+            let hasVisibleCards = false;
+            
+            cards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const description = card.querySelector('p').textContent.toLowerCase();
+                const matchesSearch = !searchTerm || title.includes(searchTerm) || description.includes(searchTerm);
+                
+                card.style.display = matchesSearch ? '' : 'none';
+                if (matchesSearch) hasVisibleCards = true;
+            });
+            
+            section.style.display = hasVisibleCards ? '' : 'none';
+        });
+    }
+});
+</script>
+</body>
 </body>
 </html>
